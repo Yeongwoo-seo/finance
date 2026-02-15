@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+
+# Environment (Firebase 키 노출 방지)
+.env
+.env.local
+.env.*.local
+
+# IDE / OS
+.vscode/
+.DS_Store
+*.log
+npm-debug.log*

@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 투자금 내역: 개인 사용 목적이면 모든 사용자 읽기/쓰기 허용 (테스트·개인용)
+    // 배포 시 인증 적용하려면 아래 주석 규칙으로 교체
+    match /transactions/{docId} {
+      allow read, write: if true;
+    }
+
+    // 인증 적용 예시 (나중에 로그인 기능 추가 시 사용):
+    // match /transactions/{docId} {
+    //   allow read, write: if request.auth != null;
+    // }
+  }
+}

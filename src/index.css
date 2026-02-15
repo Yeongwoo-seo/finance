@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #f5f6f8;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+}
+
+#root {
+  min-height: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* 아이폰 등 노치/홈 인디케이터 영역 대응 */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* 토스 스타일: 넓은 여백, 둥근 모서리 */
+.toss-card {
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.toss-input {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.toss-input:focus {
+  outline: none;
+  border-color: #3182f6;
+  box-shadow: 0 0 0 3px rgba(49, 130, 246, 0.15);
+}
+
+/* iOS 가로 스크롤 부드럽게 */
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 하단 입력 영역: 뷰포트 안에만 표시, 가로 넘침 완전 차단 */
+.input-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  z-index: 40;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  /* 모바일 주소창 등으로 인한 가로 스크롤 방지 */
+  min-width: 0;
+}
+.input-bar-inner {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.75rem 0.875rem;
+  overflow: hidden;
+}
+@media (min-height: 500px) {
+  .input-bar-inner {
+    min-height: 88px;
+    padding: 0.875rem 1rem;
+  }
+}
+@media (min-height: 600px) {
+  .input-bar-inner {
+    min-height: 96px;
+    padding: 1rem 1rem;
+  }
+}
+.input-bar-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: flex-end;
+  width: 100%;
+  min-width: 0;
+}
+.input-bar-fields > * {
+  flex: 1 1 0;
+  min-width: 64px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.input-bar-fields .input-bar-btn {
+  flex: 0 0 auto;
+  min-width: 72px;
+  max-width: none;
+}
