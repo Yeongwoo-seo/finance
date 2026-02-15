@@ -2,7 +2,7 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // 투자금 내역: 개인 사용 목적이면 모든 사용자 읽기/쓰기 허용 (테스트·개인용)
+    // 나간 돈 내역: 개인 사용 목적이면 모든 사용자 읽기/쓰기 허용 (테스트·개인용)
     // 배포 시 인증 적용하려면 아래 주석 규칙으로 교체
     match /transactions/{docId} {
       allow read, write: if true;

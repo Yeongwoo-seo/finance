@@ -18,7 +18,7 @@ function App() {
       <main
         className="w-full max-w-2xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-[calc(7rem+env(safe-area-inset-bottom,0px))] min-w-0 overflow-x-hidden"
       >
-        <h1 className="text-xl font-bold text-gray-900 mb-6">투자금 관리</h1>
+        <h1 className="text-xl font-bold text-gray-900 mb-6">나간 돈 관리</h1>
 
         <BalanceCard
           total={totalBalance}

@@ -10,7 +10,7 @@ export function BalanceCard({ total, categoryExpanded, onToggleCategory }) {
         <div className="min-w-0">
           <div className="flex items-center gap-2 text-gray-500 text-sm font-medium mb-1">
             <Wallet className="w-4 h-4 shrink-0" />
-            총 투자 잔액
+            총 나간 돈 잔액
           </div>
           <p className={`text-2xl sm:text-3xl font-bold tracking-tight truncate ${isNegative ? 'text-red-600' : 'text-gray-900'}`}>
             {isNegative ? '-' : ''}${formatted}

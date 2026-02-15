@@ -54,7 +54,7 @@ const samples = [
   { category: 'Peony', content: '소모품', amount: -500, type: 'minus' },
   { category: '비용', content: '점심', amount: -8000, type: 'minus' },
   { category: '수입', content: '프리랜스', amount: 150000, type: 'plus' },
-  { category: '투자', content: '주식 매수', amount: -100000, type: 'minus' },
+  { category: '나간 돈', content: '주식 매수', amount: -100000, type: 'minus' },
 ]
 
 async function seed() {

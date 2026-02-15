@@ -44,7 +44,7 @@ firebase deploy --only hosting
 - 예: `https://finance-67a87.web.app`
 - 또는: `https://finance-67a87.firebaseapp.com`
 
-이 주소로 접속하면 투자금 관리 대시보드가 열립니다.
+이 주소로 접속하면 나간 돈 관리 대시보드가 열립니다.
 
 ---
 
