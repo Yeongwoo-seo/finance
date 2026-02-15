@@ -36,6 +36,10 @@ export function useAddTransaction() {
       setError('올바른 금액을 입력해주세요.')
       return { success: false }
     }
+    if (!db) {
+      setError('Firebase가 설정되지 않았습니다. GitHub Actions 시크릿을 확인해 주세요.')
+      return { success: false }
+    }
 
     setError(null)
     setSubmitting(true)

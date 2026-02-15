@@ -12,6 +12,11 @@ export function useTransactions() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    if (!db) {
+      setError(new Error('Firebase가 설정되지 않았습니다. GitHub Actions 시크릿을 확인해 주세요.'))
+      setLoading(false)
+      return
+    }
     const q = query(
       collection(db, 'transactions'),
       orderBy('createdAt', 'desc')

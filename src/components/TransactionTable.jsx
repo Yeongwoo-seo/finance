@@ -88,6 +88,10 @@ export function TransactionTable({ transactions, loading }) {
   const handleUpdate = async (e) => {
     e.preventDefault()
     if (!editingId) return
+    if (!db) {
+      alert('Firebase가 설정되지 않았습니다. GitHub Actions 시크릿을 확인해 주세요.')
+      return
+    }
     const num = Number(editForm.amount)
     if (Number.isNaN(num)) return
     const type = num >= 0 ? 'plus' : 'minus'
@@ -109,6 +113,10 @@ export function TransactionTable({ transactions, loading }) {
 
   const handleDelete = async (id) => {
     if (!confirm('이 내역을 삭제할까요?')) return
+    if (!db) {
+      alert('Firebase가 설정되지 않았습니다. GitHub Actions 시크릿을 확인해 주세요.')
+      return
+    }
     try {
       await deleteDoc(doc(db, 'transactions', id))
     } catch (err) {
