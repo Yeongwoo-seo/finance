@@ -77,3 +77,40 @@ npm run dev
 - `npm run dev` — 개발 서버
 - `npm run build` — 프로덕션 빌드
 - `npm run preview` — 빌드 결과 미리보기
+- `npm run deploy` — 빌드 후 Firebase Hosting 배포 (Firebase CLI 필요)
+
+## GitHub Pages로 사이트 띄우기 (main 푸시 시 자동 배포)
+
+**`GET .../src/main.jsx 404`** 가 나오면, Pages가 **main 브랜치(소스)** 를 서빙하고 있는 상태입니다.  
+→ **Settings → Pages** 에서 **Branch를 gh-pages 로** 바꾸고, 접속 주소는 반드시 **https://yeongwoo-seo.github.io/finance/** (끝에 `/finance/`) 로 열어야 합니다.  
+자세한 확인 절차는 [docs/GITHUB_PAGES_404_FIX.md](docs/GITHUB_PAGES_404_FIX.md) 를 보세요.
+
+### 1. 저장소 시크릿 추가 (한 번만)
+
+GitHub 저장소 **Settings → Secrets and variables → Actions** 에서 **New repository secret** 로 아래 7개 추가:
+
+| Name | Value (로컬 .env에서 복사) |
+|------|----------------------------|
+| `VITE_FIREBASE_API_KEY` | .env의 값 |
+| `VITE_FIREBASE_AUTH_DOMAIN` | .env의 값 |
+| `VITE_FIREBASE_PROJECT_ID` | .env의 값 |
+| `VITE_FIREBASE_STORAGE_BUCKET` | .env의 값 |
+| `VITE_FIREBASE_MESSAGING_SENDER_ID` | .env의 값 |
+| `VITE_FIREBASE_APP_ID` | .env의 값 |
+| `VITE_FIREBASE_MEASUREMENT_ID` | .env의 값 (있으면) |
+
+### 2. GitHub Pages 켜기 (브랜치에서 배포)
+
+**Settings → Pages** 에서  
+- **Build and deployment → Source**: **Deploy from a branch** 선택  
+- **Branch**: `gh-pages` 선택, **Folder**: `/ (root)`  
+- Save
+
+이후 **main**에 푸시하면 Actions가 빌드하고 **gh-pages** 브랜치에 올립니다.  
+(처음 한 번은 위 1번 시크릿을 넣은 뒤 main에 푸시해 워크플로가 성공해야 gh-pages 브랜치가 생깁니다.)
+
+### 3. 배포 후 주소
+
+`https://yeongwoo-seo.github.io/finance/` 에서 확인할 수 있습니다.
+
+**Firebase Hosting** 을 쓰면 [DEPLOY.md](./DEPLOY.md) 를 보고, 그때는 `vite.config.js` 의 `base` 를 `'/'` 로 바꾼 뒤 빌드·배포하면 됩니다.
